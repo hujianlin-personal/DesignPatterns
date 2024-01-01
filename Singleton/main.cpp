@@ -1,9 +1,12 @@
 #include "Emperor.h"
+#include <iostream>
 
-int main(int argc, char *argv[])
+using namespace std;
+
+int main()
 {
     Emperor *pEmperor1 = Emperor::GetInstance();
-    pEmperor1->SetTitle("雍正");
+    pEmperor1->SetTitle("yongzheng");
     pEmperor1->DisplayEmperorInfo();
 
     Emperor *pEmperor2 = Emperor::GetInstance();

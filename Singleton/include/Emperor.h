@@ -1,6 +1,8 @@
 #include <windows.h>
 #include <winnt.h>
+#include <string>
 
+using namespace std;
 #ifndef _EMPEROR_H_
 #define _EMPEROR_H_
 
