@@ -23,6 +23,7 @@ void TestByd()
 
     delete eleCar;
     delete oilCar;
+    BydCarFactory::ReleaseInstance();
 }
 
 void TestTesla()
@@ -38,6 +39,7 @@ void TestTesla()
 
     delete eleCar;
     delete oilCar;
+    TeslaCarFactory::ReleaseInstance();
 }
 
 int main()
