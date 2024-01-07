@@ -4,8 +4,8 @@
 
 #include "ElectricPoweredCar.h"
 
-#ifndef _TESLA_H_
-#define _TESLA_H_
+#ifndef _TESLA_ELECTRIC_CAR_H_
+#define _TESLA_ELECTRIC_CAR_H_
 
 class TeslaElectricCar : public ElectricPoweredCar
 {
