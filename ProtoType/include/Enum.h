@@ -12,4 +12,5 @@ enum MessageDecoratorType
     Unknown = 0,
     Underline = 1,
     SlashBox = 2,
+    DashBox = 3,
 };
