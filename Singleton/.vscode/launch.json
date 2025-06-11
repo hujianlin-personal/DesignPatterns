@@ -5,30 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "g++.exe - 生成和调试活动文件",
+            "name": "Debug C++ Program",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/emperor.exe",
+            "program": "${workspaceFolder}/build/demo",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb",
+            "preLaunchTask": "C/C++: g++.exe 生成活动文件", // 调试前自动编译
             "setupCommands": [
                 {
-                    "description": "为 gdb 启用整齐打印",
+                    "description": "启用 gdb 美化打印",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
-                },
-                {
-                    "description": "将反汇编风格设置为 Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
                 }
-            ],
-            "preLaunchTask": "Build"
+            ]
         }
     ]
 }

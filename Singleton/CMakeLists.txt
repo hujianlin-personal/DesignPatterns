@@ -1,11 +1,19 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.10) # CMake version check
 
-project(SINGLETON_EMPEROR)
+find_program(CMAKE_CXX_COMPILER NAMES g++.exe PATHS "D:/Applications/VSCode/MinGW/mingw64/bin") # C++ compiler path
 
-set(CMAKE_BUILD_TYPE Debug)
+project(singleton VERSION 1.0 LANGUAGES CXX) # Project name
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall")
+set(CMAKE_BUILD_TYPE Debug) # Debug mode
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -g -Wall") # Flags
 
-add_executable(emperor main.cpp src/Emperor.cpp)
+include_directories(include) # Include directory
+
+file(GLOB SOURCE_FILES  
+main.cpp 
+src/*.cpp)
+
+add_executable(demo ${SOURCE_FILES}) # Executable
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin) # Output directory for the executable
