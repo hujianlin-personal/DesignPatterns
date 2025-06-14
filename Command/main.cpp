@@ -1,39 +1,28 @@
-#include "Chef.h"
-#include "Waiter.h"
-#include "OrderCommand.h"
-#include <string>
+#include "./include/AddCommand.h"
+#include "./include/DeleteCommand.h"
+#include "./include/QueryCommand.h"
+#include "./include/UpdateCommand.h"
+
+#include <iostream>
+#include <queue>
 
 using namespace std;
 
 int main()
 {
-    Chef *chef = new Chef();
-    Waiter *waiter = new Waiter();
-    ICommand *order = new OrderCommand(chef);
-
-    waiter->SetCommand(order);
-    string dish = "FriedPotatoes";
-    waiter->TakeOrder(dish);
-    dish = "Sandwich";
-    waiter->TakeOrder(dish);
-
-    waiter->CancelOrder(dish);
-
-    if (NULL != chef)
+    std::queue<DbCommand *> commandQueue;
+    SQLOperator *sqlOperator = SQLOperator::GetInstance();
+    commandQueue.push(new AddCommand(sqlOperator));
+    commandQueue.push(new QueryCommand(sqlOperator));
+    commandQueue.push(new UpdateCommand(sqlOperator));
+    commandQueue.push(new DeleteCommand(sqlOperator));
+    while (!commandQueue.empty())
     {
-        delete chef;
-        chef = NULL;
+        DbCommand *command = commandQueue.front();
+        command->Handle();
+        delete command; // 释放内存
+        commandQueue.pop();
     }
-
-    if (NULL != waiter)
-    {
-        delete waiter;
-        waiter = NULL;
-    }
-
-    if (NULL != order)
-    {
-        delete order;
-        order = NULL;
-    }
+    cout << "All commands executed successfully." << endl;
+    return 0;
 }
