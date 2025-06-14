@@ -6,21 +6,14 @@ using namespace std;
 
 Adapter::Adapter()
 {
-    this->m_socket = new Socket();
 }
 
 Adapter::~Adapter()
 {
-    if (NULL != this->m_socket)
-    {
-        delete this->m_socket;
-        this->m_socket = NULL;
-    }
 }
 
-void Adapter::Charge5V()
+void Adapter::Request()
 {
-    int outOfSocket = this->m_socket->Output();
-    int input = outOfSocket / 44;
-    cout << "charge input:" << input << "V" << endl;
+    std::cout << "Adapter: Request called." << std::endl;
+    this->m_adaptee.SpecificRequest(); // Call the Adaptee's method
 }
