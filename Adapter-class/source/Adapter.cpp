@@ -12,14 +12,8 @@ Adapter::~Adapter()
 {
 }
 
-int Adapter::Output()
+void Adapter::Request()
 {
-    cout << "output 5v" << endl;
-    return 5;
-}
-
-void Adapter::Charge5V()
-{
-    int input = this->Output();
-    cout << "charge input:" << input << "V" << endl;
+    std::cout << "Adapter: Request called." << std::endl;
+    Adaptee::SpecificRequest(); // Call the Adaptee's method
 }

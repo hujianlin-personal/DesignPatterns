@@ -1,20 +1,16 @@
-/************************************
- * 充电器
- ***********************************/
-
+#pragma once
 #ifndef _ADAPTER_H_
 #define _ADAPTER_H_
 
-#include "IChargeInterface.h"
-#include "Socket.h"
+#include "Target.h"
+#include "Adaptee.h"
 
-class Adapter : public IChargeInterface, public Socket
+class Adapter : public ITarget, public Adaptee
 {
 public:
     Adapter();
     ~Adapter();
-    void Charge5V();
-    int Output();
+    void Request() override;
 };
 
 #endif
