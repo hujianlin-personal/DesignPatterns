@@ -1,25 +1,25 @@
-#include "BackDoor.h"
-#include "GivenGreenLight.h"
-#include "Context.h"
+#include "./include/Car.h"
+#include "./include/Bus.h"
+#include "./include/TransportContext.h"
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    cout << "Here is the first appointment place" << endl;
-    Context *ptrContext1 = new Context(new BackDoor());
-    ptrContext1->Open();
+    TransportContext *transportContext = new TransportContext();
+    ITransportStrategy *carStrategy = new Car();
+    ITransportStrategy *busStrategy = new Bus();
 
-    cout << "Here is the second appointment place" << endl;
-    Context *ptrContext2 = new Context(new GivenGreenLight());
-    ptrContext2->Open();
+    transportContext->SetStrategy(carStrategy);
+    transportContext->Transport(); // 输出: Transport by Car
 
-    delete ptrContext1;
-    ptrContext1 = NULL;
+    transportContext->SetStrategy(busStrategy);
+    transportContext->Transport(); // 输出: Transport by Bus
 
-    delete ptrContext2;
-    ptrContext2 = NULL;
+    delete busStrategy;
+    delete carStrategy;
+    delete transportContext;
 
     return 0;
 }
