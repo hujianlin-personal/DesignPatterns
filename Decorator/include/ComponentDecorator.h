@@ -4,7 +4,7 @@
  * @Author: hujianlin
  * @Date: 2024-02-08 20:53:23
  * @LastEditors: hujianlin
- * @LastEditTime: 2024-02-08 21:05:30
+ * @LastEditTime: 2025-06-15 10:03:01
  */
 
 #ifndef _COMPONENT_DECORATOR_H_
@@ -18,7 +18,7 @@ public:
     ComponentDecorator(IComponent *com);
     virtual ~ComponentDecorator();
 
-    virtual void Operation();
+    virtual void Operation() override;
 
 protected:
     IComponent *m_com;
